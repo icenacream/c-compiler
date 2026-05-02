@@ -18,7 +18,7 @@ import sys
 import os
 import argparse
 import subprocess
-from compiler import (
+from pycc import (
     Lexer, LexerError,
     Parser, ParseError,
     SemanticAnalyzer, SemanticError,
