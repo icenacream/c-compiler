@@ -195,7 +195,7 @@ def main():
 
     print(f"\n{green('✓')} Compiled to: {bold(outfile)}")
 
-    #  Save to tests/ folder
+    #  Save to tests/ folder 
     import shutil
     tests_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests")
     os.makedirs(tests_dir, exist_ok=True)
@@ -375,7 +375,8 @@ int main() {
             continue
 
         # Write and run
-        outfile = f"/tmp/demo_{key}.py"
+        import tempfile
+        outfile = os.path.join(tempfile.gettempdir(), f"demo_{key}.py")
         with open(outfile, 'w') as f:
             f.write(results['python'])
 
