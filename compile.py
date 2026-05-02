@@ -56,7 +56,7 @@ def compile_source(source: str, filename: str = "<stdin>",
     """
     results = {}
 
-    # ── Phase 1: Lexing ───────────────────────────────────────────────────────
+    #  Phase 1: Lexing 
     if verbose:
         print(bold(f"\n{'─'*20} Phase 1: Lexical Analysis {'─'*20}"))
     try:
@@ -76,7 +76,7 @@ def compile_source(source: str, filename: str = "<stdin>",
         print(red(f"\n  ✗ {e}"))
         raise
 
-    # ── Phase 2: Parsing ──────────────────────────────────────────────────────
+    #  Phase 2: Parsing 
     if verbose:
         print(bold(f"\n{'─'*20} Phase 2: Parsing {'─'*28}"))
     try:
@@ -96,7 +96,7 @@ def compile_source(source: str, filename: str = "<stdin>",
         print(red(f"\n  ✗ {e}"))
         raise
 
-    # ── Phase 3: Semantic Analysis ────────────────────────────────────────────
+    #  Phase 3: Semantic Analysis 
     if not skip_semantic:
         if verbose:
             print(bold(f"\n{'─'*20} Phase 3: Semantic Analysis {'─'*18}"))
@@ -115,7 +115,7 @@ def compile_source(source: str, filename: str = "<stdin>",
             print(green(f"  ✓ No semantic errors"))
         results['warnings'] = analyzer.warnings
 
-    # ── Phase 4: IR Generation ────────────────────────────────────────────────
+    #  Phase 4: IR Generation 
     if show_ir:
         if verbose:
             print(bold(f"\n{'─'*20} Phase 4a: IR Generation {'─'*21}"))
@@ -124,7 +124,7 @@ def compile_source(source: str, filename: str = "<stdin>",
         print("\n" + ir_code)
         results['ir'] = ir_code
 
-    # ── Phase 4: Code Generation ──────────────────────────────────────────────
+    #  Phase 4: Code Generation 
     if verbose:
         print(bold(f"\n{'─'*20} Phase 4b: Code Generation {'─'*19}"))
     codegen = PythonCodeGen()
@@ -195,7 +195,7 @@ def main():
 
     print(f"\n{green('✓')} Compiled to: {bold(outfile)}")
 
-    # ── Save to tests/ folder ─────────────────────────────────────────────────
+    #  Save to tests/ folder
     import shutil
     tests_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests")
     os.makedirs(tests_dir, exist_ok=True)
